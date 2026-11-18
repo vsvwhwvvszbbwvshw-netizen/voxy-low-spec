@@ -7,12 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 25
       - name: Unzip
         run: unzip -q *.zip
+      - name: Gradle surumunu guncelle
+        run: sed -i 's/gradle-9.4.0-bin/gradle-9.5.0-bin/' voxy-low-spec/gradle/wrapper/gradle-wrapper.properties
       - name: Build
         working-directory: voxy-low-spec
         run: |
